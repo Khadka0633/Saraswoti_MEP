@@ -40,27 +40,18 @@ export default function Footer() {
                 marginBottom: 20,
               }}
             >
-              <div
+              {/* ── Logo image replaces the "N" square ── */}
+              <img
+                src="/images/saraswoti.png"
+                alt="Saraswoti Logo"
                 style={{
-                  width: 36,
-                  height: 36,
-                  background: "var(--gold-dim)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  width: 44,
+                  height: 44,
+                  objectFit: "contain",
+                  filter: "brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg)",
+                  // ↑ tints it gold to match var(--gold); remove or adjust if you prefer the original blue
                 }}
-              >
-                <span
-                  style={{
-                    fontFamily: "Bebas Neue",
-                    fontSize: "1.4rem",
-                    color: "var(--cream)",
-                    lineHeight: 1,
-                  }}
-                >
-                  N
-                </span>
-              </div>
+              />
               <div>
                 <div
                   style={{
@@ -71,7 +62,7 @@ export default function Footer() {
                     lineHeight: 1,
                   }}
                 >
-                  SARASWOTI
+                  SARASWATI
                 </div>
                 <div
                   style={{

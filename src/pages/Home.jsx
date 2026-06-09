@@ -1,5 +1,5 @@
 /**
- * Home.jsx — NexMEP Corporate Redesign
+ * Home.jsx — SaraswatiMEP Corporate Redesign
  *
  * Typography: Inter (body) + Playfair Display (headings) — load in index.html:
  *   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -50,14 +50,17 @@ const SERVICE_ICONS = {
   plumbing: <IconDroplet />,
   fire: <IconShield />,
   amc: <IconSettings />,
+  civil:<IconShield />,
+  steel:<IconWind />,
+  Architectural:<IconDroplet />,
 };
 
 const SERVICE_COLORS = {
-  hvac: "#b8962e",
-  electrical: "#1a6b5a",
-  plumbing: "#1a4070",
-  fire: "#8b2e2e",
-  amc: "#4a5e2e",
+  hvac: "#caaa49",
+  electrical: "#caaa49",
+  plumbing: "#caaa49",
+  fire: "#caaa49",
+  amc: "#caaa49",
 };
 
 // ── Shared style tokens ───────────────────────────────────────────────────────
@@ -108,9 +111,9 @@ function GoldRule({ width = 48 }) {
 
 // ── Stats Banner ──────────────────────────────────────────────────────────────
 
-function StatsBanner() {
+ /**   function StatsBanner() {
   const stats = [
-    { n: 500, suffix: "+", label: "MEP Projects Completed" },
+    { n: 4, suffix: "+", label: "MEP Projects Completed" },
     { n: 25, suffix: "+", label: "Years of Experience" },
     { n: 200, suffix: "+", label: "Qualified Engineers" },
     { n: 12, suffix: "", label: "Industry Sectors" },
@@ -161,7 +164,7 @@ function StatsBanner() {
       </div>
     </section>
   );
-}
+   }  **/
 
 // ── About ─────────────────────────────────────────────────────────────────────
 
@@ -360,7 +363,7 @@ function AboutSection() {
                   letterSpacing: "0.1em",
                 }}
               >
-                SaraswotiMEP / SCHEMATIC-01
+                SaraswatiMEP / SCHEMATIC-01
               </div>
             </div>
 
@@ -406,7 +409,7 @@ function AboutSection() {
 
           {/* Copy */}
           <div>
-            <div style={S.sectionLabel}>About SaraswotiMEP</div>
+            <div style={S.sectionLabel}>About SaraswatiMEP</div>
             <GoldRule />
             <h2
               className="font-display"
@@ -421,7 +424,7 @@ function AboutSection() {
               Engineering Firm
             </h2>
             <p style={{ ...S.bodyLight, marginBottom: 16 }}>
-              Established in 2025, SaraswotiMEP has grown from a regional HVAC
+              Established in 2025, SaraswatiMEP has grown from a regional HVAC
               specialist into Nepal's premier full-spectrum engineering services
               from initial concept through construction handover and maintaining
               the systems that keep modern buildings operational.
@@ -432,7 +435,7 @@ function AboutSection() {
               "Our team combines the precision of advanced engineering software
               with the judgment of experienced professionals who have actually
               built what they design."<br/>
-              — The Saraswoti MEP solutions Team
+              — The Saraswati MEP solutions Team
             </p>
 
             <div
@@ -565,16 +568,17 @@ function ServicesPreview() {
             <div
               key={s.id}
               style={{
-                background: "var(--navy)",
+                background: "rgba(255,255,255,0.04)",
                 padding: "40px 36px",
                 borderTop: `3px solid ${SERVICE_COLORS[s.id] ?? "var(--gold)"}`,
                 transition: "background 0.2s",
+                
               }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.background = "var(--navy-mid)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "var(--navy)")
+                (e.currentTarget.style.background = "rgba(255,255,255,0.04)")
               }
             >
               <div
@@ -761,7 +765,8 @@ function SectorsPreview() {
 
 // ── Projects ──────────────────────────────────────────────────────────────────
 
-function ProjectsPreview() {
+
+ {/*  function ProjectsPreview() {
   return (
     <section style={{ background: "var(--warm-white)", padding: "120px 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
@@ -920,7 +925,8 @@ function ProjectsPreview() {
       </div>
     </section>
   );
-}
+   }
+  */}
 
 // ── Testimonials ──────────────────────────────────────────────────────────────
 
@@ -1033,7 +1039,7 @@ function TestimonialsSection() {
 
 // ── Clients ───────────────────────────────────────────────────────────────────
 
-function ClientsSection() {
+  {/* function ClientsSection() {
   return (
     <section
       style={{
@@ -1061,7 +1067,7 @@ function ClientsSection() {
               marginTop: 8,
             }}
           >
-            Nepal's most reputable organisations rely on NexMEP for critical
+            Nepal's most reputable organisations rely on SaraswatiMEP for critical
             building systems
           </p>
         </div>
@@ -1107,7 +1113,8 @@ function ClientsSection() {
       </div>
     </section>
   );
-}
+   }
+  */}
 
 // ── CTA ───────────────────────────────────────────────────────────────────────
 
@@ -1213,13 +1220,12 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <StatsBanner />
       <AboutSection />
       <ServicesPreview />
       <SectorsPreview />
-      <ProjectsPreview />
+     
       <TestimonialsSection />
-      <ClientsSection />
+      
       <CTASection />
     </>
   );

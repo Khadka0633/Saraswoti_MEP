@@ -1,20 +1,210 @@
+/**
+ * Projects.jsx — SaraswatiMEP
+ * Matches Home.jsx design system:
+ *   Colors: --navy, --navy-mid, --navy-light, --warm-white, --warm-gray,
+ *           --ink, --ink-mid, --ink-light, --gold, --gold-light, --border, --white
+ *   Fonts:  Playfair Display (headings) + Inter (body)
+ */
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IconArrow } from "../components/Icons.jsx";
 import { PROJECTS } from "../data/index.js";
 
-const ALL_TYPES = ["All", ...Array.from(new Set(PROJECTS.map((p) => p.type)))];
+// ── Data ──────────────────────────────────────────────────────────────────────
 
-// Extended project list for the full page
 const ALL_PROJECTS = [
   ...PROJECTS,
-  { id: 7,  title: "Radisson Blu Kathmandu",        type: "Hospitality",    tag: "Completed", color: "#c9a84c" },
-  { id: 8,  title: "B&B Hospital Gwarko",           type: "Healthcare",     tag: "Completed", color: "#3dd9c0" },
-  { id: 9,  title: "NMB Bank HQ",                   type: "Corporate",      tag: "Completed", color: "#d94f3d" },
-  { id: 10, title: "Bhairahawa SEZ Factory Block",  type: "Industrial",     tag: "Ongoing",   color: "#f0a04b" },
-  { id: 11, title: "Budhanilkantha School",          type: "Education",      tag: "Completed", color: "#a0d490" },
-  { id: 12, title: "Kathmandu University Main Bldg", type: "Education",      tag: "Ongoing",   color: "#a0d490" },
+  { id: 7,  title: "Radisson Blu Kathmandu",         type: "Hospitality",  tag: "Completed", color: "#b8962e" },
+  { id: 8,  title: "B&B Hospital Gwarko",            type: "Healthcare",   tag: "Completed", color: "#2e7d6b" },
+  { id: 9,  title: "NMB Bank HQ",                    type: "Corporate",    tag: "Completed", color: "#1a4070" },
+  { id: 10, title: "Bhairahawa SEZ Factory Block",   type: "Industrial",   tag: "Ongoing",   color: "#7a5c1e" },
+  { id: 11, title: "Budhanilkantha School",           type: "Education",    tag: "Completed", color: "#3a6b3a" },
+  { id: 12, title: "Kathmandu University Main Bldg", type: "Education",    tag: "Ongoing",   color: "#3a6b3a" },
 ];
+
+const ALL_TYPES = ["All", ...Array.from(new Set(ALL_PROJECTS.map((p) => p.type)))];
+
+// ── Style tokens ──────────────────────────────────────────────────────────────
+
+const S = {
+  sectionLabel: {
+    fontFamily: "'Inter', sans-serif",
+    fontSize: "0.72rem",
+    fontWeight: 600,
+    letterSpacing: "0.14em",
+    textTransform: "uppercase",
+    color: "var(--gold)",
+    marginBottom: 14,
+  },
+  bodyLight: {
+    fontFamily: "'Inter', sans-serif",
+    color: "var(--ink-mid)",
+    lineHeight: 1.8,
+    fontSize: "0.95rem",
+  },
+  bodyDark: {
+    fontFamily: "'Inter', sans-serif",
+    color: "rgba(255,255,255,0.65)",
+    lineHeight: 1.8,
+    fontSize: "0.95rem",
+  },
+};
+
+function GoldRule({ width = 48 }) {
+  return (
+    <div style={{ width, height: 2, background: "var(--gold)", marginBottom: 28 }} />
+  );
+}
+
+// ── Project card ──────────────────────────────────────────────────────────────
+
+function ProjectCard({ project }) {
+  const [hovered, setHovered] = useState(false);
+  const isOngoing = project.tag === "Ongoing";
+
+  return (
+    <div
+      style={{
+        background: "var(--white)",
+        border: "1px solid var(--border)",
+        overflow: "hidden",
+        transition: "box-shadow 0.25s, transform 0.25s",
+        boxShadow: hovered ? "0 12px 40px rgba(15,45,82,0.13)" : "none",
+        transform: hovered ? "translateY(-4px)" : "none",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Visual */}
+      <div
+        style={{
+          height: 220,
+          background: `linear-gradient(140deg, var(--navy) 0%, ${project.color}55 100%)`,
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+        }}
+      >
+        {/* Blueprint grid */}
+        <svg
+          viewBox="0 0 360 220"
+          fill="none"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+        >
+          {[55, 110, 165].map((y) => (
+            <line key={y} x1="0" y1={y} x2="360" y2={y} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          ))}
+          {[72, 144, 216, 288].map((x) => (
+            <line key={x} x1={x} y1="0" x2={x} y2="220" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          ))}
+        </svg>
+
+        {/* Ghost type label */}
+        <div
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "4.5rem",
+            fontWeight: 700,
+            color: "rgba(255,255,255,0.05)",
+            letterSpacing: "0.05em",
+            userSelect: "none",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          {project.type.slice(0, 4).toUpperCase()}
+        </div>
+
+        {/* Gold bottom accent */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 3,
+            background: project.color,
+            opacity: hovered ? 1 : 0.6,
+            transition: "opacity 0.25s",
+          }}
+        />
+
+        {/* ID badge */}
+        <div
+          style={{
+            position: "absolute",
+            top: 16,
+            left: 20,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.62rem",
+            color: "rgba(255,255,255,0.3)",
+            letterSpacing: "0.1em",
+          }}
+        >
+          {String(project.id).padStart(2, "0")}
+        </div>
+
+        {/* Tag badge top-right */}
+        <div
+          style={{
+            position: "absolute",
+            top: 14,
+            right: 16,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.62rem",
+            fontWeight: 600,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: isOngoing ? "#1a6b5a" : "var(--gold)",
+            background: isOngoing ? "rgba(26,107,90,0.15)" : "var(--gold-light)",
+            padding: "4px 10px",
+          }}
+        >
+          {project.tag}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div
+        style={{
+          padding: "22px 24px",
+          borderTop: `2px solid ${hovered ? project.color : "transparent"}`,
+          transition: "border-color 0.25s",
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.65rem",
+            fontWeight: 600,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: "var(--ink-light)",
+            marginBottom: 6,
+          }}
+        >
+          {project.type}
+        </div>
+        <h3
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "1.1rem",
+            fontWeight: 600,
+            color: "var(--ink)",
+            lineHeight: 1.3,
+          }}
+        >
+          {project.title}
+        </h3>
+      </div>
+    </div>
+  );
+}
+
+// ── Main component ────────────────────────────────────────────────────────────
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
@@ -24,117 +214,326 @@ export default function Projects() {
       ? ALL_PROJECTS
       : ALL_PROJECTS.filter((p) => p.type === filter);
 
+  const completedCount = ALL_PROJECTS.filter((p) => p.tag === "Completed").length;
+  const ongoingCount   = ALL_PROJECTS.filter((p) => p.tag === "Ongoing").length;
+
   return (
     <main style={{ paddingTop: 104 }}>
 
-      {/* ── Page hero ── */}
-      <section style={{ background: "var(--iron)", padding: "80px 0", position: "relative", overflow: "hidden", borderBottom: "1px solid rgba(201,168,76,0.08)" }}>
-        <div style={{ position: "absolute", bottom: -20, right: -10, fontFamily: "Bebas Neue", fontSize: "clamp(80px,14vw,200px)", color: "rgba(255,255,255,0.02)", lineHeight: 1, userSelect: "none", pointerEvents: "none" }}>
+      {/* ── Page hero ─────────────────────────────────────────────────────── */}
+      <section
+        style={{
+          background: "var(--navy)",
+          padding: "100px 0 80px",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Ghost watermark */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: -40,
+            right: -20,
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "clamp(80px,16vw,220px)",
+            color: "rgba(255,255,255,0.025)",
+            lineHeight: 1,
+            userSelect: "none",
+            pointerEvents: "none",
+            fontWeight: 700,
+          }}
+        >
           PORTFOLIO
         </div>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px", position: "relative" }}>
-          <div className="section-label" style={{ marginBottom: 16 }}>Our Work</div>
-          <h1 className="font-display" style={{ fontSize: "clamp(48px,7vw,96px)", lineHeight: 0.9, color: "var(--white)", marginBottom: 24, maxWidth: 700 }}>
-            {ALL_PROJECTS.length}+ Completed <span style={{ color: "var(--gold)" }}>Projects</span>
+
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            padding: "0 48px",
+            position: "relative",
+          }}
+        >
+          <div style={S.sectionLabel}>Our Work</div>
+          <GoldRule />
+          <h1
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(40px, 6vw, 80px)",
+              fontWeight: 700,
+              lineHeight: 1.0,
+              color: "var(--white)",
+              marginBottom: 24,
+              maxWidth: 700,
+            }}
+          >
+            {ALL_PROJECTS.length}+ Projects
+            <br />
+            <span style={{ color: "var(--gold)" }}>Across Nepal</span>
           </h1>
-          <p style={{ color: "var(--silver)", fontSize: "1.05rem", lineHeight: 1.8, maxWidth: 560 }}>
-            From airport terminals to pharmaceutical plants — here's a selection of what we've built.
+          <p style={{ ...S.bodyDark, fontSize: "1.05rem", maxWidth: 520 }}>
+            From airport terminals to pharmaceutical plants — here's a
+            selection of what we've built and are building.
           </p>
-        </div>
-      </section>
 
-      {/* ── Filter tabs ── */}
-      <section style={{ background: "var(--coal)", padding: "40px 0 0", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
-          <div style={{ display: "flex", gap: 0, flexWrap: "wrap" }}>
-            {ALL_TYPES.map((type) => (
-              <button
-                key={type}
-                onClick={() => setFilter(type)}
-                style={{
-                  padding: "14px 28px",
-                  background: "transparent",
-                  color: filter === type ? "var(--gold)" : "var(--mid)",
-                  border: "none",
-                  borderBottom: filter === type ? "2px solid var(--gold)" : "2px solid transparent",
-                  cursor: "pointer",
-                  fontFamily: "JetBrains Mono",
-                  fontSize: "0.78rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  transition: "all 0.2s",
-                }}
-                onMouseEnter={(e) => { if (filter !== type) e.currentTarget.style.color = "var(--light)"; }}
-                onMouseLeave={(e) => { if (filter !== type) e.currentTarget.style.color = "var(--mid)"; }}
-              >
-                {type}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Grid ── */}
-      <section style={{ background: "var(--coal)", padding: "60px 0 100px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, background: "rgba(255,255,255,0.04)" }} className="three-col">
-            {filtered.map((p) => (
-              <div key={p.id} className="project-card">
-                {/* Visual placeholder */}
-                <div style={{ height: 240, background: `linear-gradient(135deg, var(--steel) 0%, ${p.color}18 100%)`, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
-                  <div style={{ fontFamily: "Bebas Neue", fontSize: "5rem", color: `${p.color}20`, letterSpacing: "0.05em" }}>
-                    {p.type.slice(0, 3).toUpperCase()}
-                  </div>
-                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: p.color }} />
-                  {/* Number badge */}
-                  <div style={{ position: "absolute", top: 16, left: 16, fontFamily: "JetBrains Mono", fontSize: "0.7rem", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>
-                    {String(p.id).padStart(2, "0")}
-                  </div>
+          {/* Mini stats row */}
+          <div
+            style={{
+              display: "flex",
+              gap: 48,
+              marginTop: 52,
+              paddingTop: 36,
+              borderTop: "1px solid rgba(255,255,255,0.1)",
+              flexWrap: "wrap",
+            }}
+          >
+            {[
+              [ALL_PROJECTS.length + "+", "Total Projects"],
+              [completedCount + "",        "Completed"],
+              [ongoingCount + "",          "Ongoing"],
+            ].map(([n, l]) => (
+              <div key={l}>
+                <div
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "2.4rem",
+                    fontWeight: 700,
+                    color: "var(--gold)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {n}
                 </div>
-
-                {/* Overlay on hover */}
-                <div className="project-card-overlay">
-                  <span className="tag" style={{ color: p.tag === "Ongoing" ? "var(--cyan)" : "var(--gold)", background: p.tag === "Ongoing" ? "rgba(61,217,192,0.1)" : "rgba(201,168,76,0.1)", alignSelf: "flex-start", marginBottom: 8 }}>
-                    {p.tag}
-                  </span>
-                  <div className="font-display" style={{ fontSize: "1.3rem", color: "var(--white)" }}>{p.title}</div>
-                  <div style={{ color: "var(--silver)", fontSize: "0.8rem", letterSpacing: "0.08em", textTransform: "uppercase" }}>{p.type}</div>
-                </div>
-
-                {/* Card footer */}
-                <div style={{ padding: "20px 24px", background: "var(--iron)" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div>
-                      <div style={{ fontWeight: 600, color: "var(--light)", fontSize: "0.95rem" }}>{p.title}</div>
-                      <div style={{ color: "var(--mid)", fontSize: "0.78rem", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 2 }}>{p.type}</div>
-                    </div>
-                    <span className="tag" style={{ color: p.tag === "Ongoing" ? "var(--cyan)" : "var(--gold)", background: p.tag === "Ongoing" ? "rgba(61,217,192,0.1)" : "rgba(201,168,76,0.1)" }}>
-                      {p.tag}
-                    </span>
-                  </div>
+                <div
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "0.72rem",
+                    color: "rgba(255,255,255,0.4)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                    marginTop: 6,
+                    fontWeight: 500,
+                  }}
+                >
+                  {l}
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {filtered.length === 0 && (
-            <div style={{ textAlign: "center", padding: "80px 0", color: "var(--mid)" }}>
-              <div className="font-display" style={{ fontSize: "2rem", marginBottom: 12 }}>No projects found</div>
-              <p>Try a different filter.</p>
+      {/* ── Filter tabs ───────────────────────────────────────────────────── */}
+      <section
+        style={{
+          background: "var(--warm-white)",
+          borderBottom: "1px solid var(--border)",
+          padding: "0",
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
+          <div
+            style={{ display: "flex", flexWrap: "wrap", gap: 0 }}
+            className="filter-tabs"
+          >
+            {ALL_TYPES.map((type) => {
+              const active = filter === type;
+              return (
+                <button
+                  key={type}
+                  onClick={() => setFilter(type)}
+                  style={{
+                    padding: "18px 28px",
+                    background: "transparent",
+                    color: active ? "var(--navy)" : "var(--ink-light)",
+                    border: "none",
+                    borderBottom: active
+                      ? "2px solid var(--navy)"
+                      : "2px solid transparent",
+                    cursor: "pointer",
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "0.75rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    transition: "all 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!active) e.currentTarget.style.color = "var(--navy)";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!active) e.currentTarget.style.color = "var(--ink-light)";
+                  }}
+                >
+                  {type}
+                  {type !== "All" && (
+                    <span
+                      style={{
+                        marginLeft: 8,
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: "0.65rem",
+                        color: active ? "var(--gold)" : "var(--ink-light)",
+                        fontWeight: 400,
+                      }}
+                    >
+                      ({ALL_PROJECTS.filter((p) => p.type === type).length})
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Projects grid ─────────────────────────────────────────────────── */}
+      <section style={{ background: "var(--warm-gray)", padding: "72px 0 100px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
+
+          {filtered.length > 0 ? (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: 24,
+              }}
+              className="three-col"
+            >
+              {filtered.map((p) => (
+                <ProjectCard key={p.id} project={p} />
+              ))}
+            </div>
+          ) : (
+            <div
+              style={{
+                textAlign: "center",
+                padding: "80px 0",
+                color: "var(--ink-light)",
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: "2rem",
+                  marginBottom: 12,
+                  color: "var(--ink)",
+                }}
+              >
+                No projects found
+              </div>
+              <p style={S.bodyLight}>Try a different filter.</p>
             </div>
           )}
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section style={{ background: "var(--iron)", padding: "80px 48px", textAlign: "center", borderTop: "1px solid rgba(201,168,76,0.08)" }}>
-        <div className="section-label" style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}>Be Our Next</div>
-        <h2 className="font-display" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--white)", lineHeight: 0.95, marginBottom: 28 }}>
-          Your Project, <span style={{ color: "var(--gold)" }}>Our Expertise</span>
-        </h2>
-        <Link to="/contact" className="btn-gold">
-          Discuss Your Project <IconArrow />
-        </Link>
+      {/* ── CTA ───────────────────────────────────────────────────────────── */}
+      <section
+        style={{
+          background: "var(--warm-white)",
+          padding: "100px 0",
+          borderTop: "1px solid var(--border)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            padding: "0 48px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 40,
+          }}
+          className="cta-inner"
+        >
+          <div>
+            <div style={S.sectionLabel}>Start a Project</div>
+            <GoldRule />
+            <h2
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 700,
+                lineHeight: 1.1,
+                color: "var(--ink)",
+                fontSize: "clamp(28px, 3vw, 44px)",
+              }}
+            >
+              Your Project,
+              <br />
+              Our Expertise
+            </h2>
+          </div>
+
+          <div>
+            <p style={{ ...S.bodyLight, maxWidth: 360, marginBottom: 32 }}>
+              Every great building starts with a conversation. Tell us about
+              your project and we'll put together a tailored proposal within
+              48 hours.
+            </p>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <Link
+                to="/contact"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 10,
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "0.8rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  background: "var(--navy)",
+                  color: "var(--white)",
+                  padding: "16px 32px",
+                  textDecoration: "none",
+                  transition: "background 0.2s, gap 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--navy-mid)";
+                  e.currentTarget.style.gap = "16px";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "var(--navy)";
+                  e.currentTarget.style.gap = "10px";
+                }}
+              >
+                Discuss Your Project <IconArrow size={13} />
+              </Link>
+              <Link
+                to="/services"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 10,
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "0.8rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  background: "transparent",
+                  color: "var(--navy)",
+                  padding: "16px 32px",
+                  textDecoration: "none",
+                  border: "1px solid var(--navy)",
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--navy)";
+                  e.currentTarget.style.color = "var(--white)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.color = "var(--navy)";
+                }}
+              >
+                Our Services
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );

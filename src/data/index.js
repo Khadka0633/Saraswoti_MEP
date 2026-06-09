@@ -35,6 +35,29 @@ export const SERVICES = [
     desc: "Post-project annual maintenance contracts and rapid-response field support teams to maximize uptime for your systems.",
     path: "/services/amc",
   },
+
+    {
+    id: "civil",
+    short: "06",
+    label: "Civil Engineering",
+    desc: "From permit submission to site supervision and final handover. Our team coordinates contractors, manages QA/QC, and ensures delivery on time and budget.",
+    path: "/services/amc",
+  },
+
+    {
+    id: "steel",
+    short: "07",
+    label: "Steel Structures",
+    desc: "Design, analysis, and detailed fabrication drawings for industrial sheds, portal frames, trusses, and composite structures using Tekla, ETABS and SAP2000..",
+    path: "/services/amc",
+  },
+    {
+    id: "Architectural",
+    short: "08",
+    label: "Architectural Design",
+    desc: "Space planning, conceptual design, and full working drawing packages. We bridge aesthetics and function, producing construction-ready architectural documentation.",
+    path: "/services/amc",
+  },
 ];
 
 // ── Sectors ─────────────────────────────────────────────────────────────────
@@ -61,21 +84,21 @@ export const PROJECTS = [
 export const TESTIMONIALS = [
   {
     id: 1,
-    quote: "The NexMEP team delivered every milestone ahead of schedule and their technical depth is unmatched in Nepal. Their HVAC design for our hotel exceeded our energy targets.",
-    name: "Gaurav Agarwal",
-    role: "Managing Director, Nepal Hospitality Group",
+    quote: "The SaraswotiMEP team delivered every milestone ahead of schedule and their technical depth is unmatched in Nepal. Their HVAC design for our hotel exceeded our energy targets.",
+    name: "Arya Shrestha",
+    role: "Managing Director",
   },
   {
     id: 2,
-    quote: "From design to commissioning, NexMEP handled our entire hospital MEP works with zero defects. Highly recommended for critical infrastructure projects.",
-    name: "Naveen Bhatt",
-    role: "GM Projects, Nepal Mediciti Hospital",
+    quote: "From design to commissioning, SaraswotiMEP handled our entire hospital MEP works with zero defects. Highly recommended for critical infrastructure projects.",
+    name: "Rakesh Pal",
+    role: "GM Projects",
   },
   {
     id: 3,
     quote: "Outstanding after-sales support. Whenever we needed them, they responded within hours. That level of commitment is rare in this industry.",
-    name: "Mahendra B. Amatya",
-    role: "Managing Director, Nepal Pharmaceuticals Pvt. Ltd.",
+    name: "Abin Rai",
+    role: "Managing Director",
   },
 ];
 

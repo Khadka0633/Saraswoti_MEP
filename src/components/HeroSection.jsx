@@ -71,7 +71,7 @@ export default function HeroSection() {
                 color: "var(--cream)", maxWidth: 440, marginBottom: 40,
               }}
             >
-              NexMEP delivers end-to-end Mechanical, Electrical & Plumbing solutions for
+              SaraswatiMEP delivers end-to-end Mechanical, Electrical & Plumbing solutions for
               Nepal's most demanding construction projects — from five-star hotels to critical
               healthcare facilities.
             </p>

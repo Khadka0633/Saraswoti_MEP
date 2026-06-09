@@ -209,12 +209,13 @@ body {
 /* ── Dropdown ── */
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 12px);
+  top: 100%;                    /* flush — no gap */
   left: 50%;
   transform: translateX(-50%);
   background: var(--iron);
   border: 1px solid rgba(201,168,76,0.15);
   padding: 8px 0;
+  padding-top: 16px;            /* visual breathing room, but INSIDE the box */
   min-width: 200px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
   z-index: 100;

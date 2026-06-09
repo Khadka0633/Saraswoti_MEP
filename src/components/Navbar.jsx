@@ -6,13 +6,11 @@ import {
   IconX,
   IconPhone,
   IconMail,
-  IconChevronDown,
 } from "./Icons.jsx";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdown, setDropdown] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -21,10 +19,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
-    setDropdown(null);
   }, [location.pathname]);
 
   return (
@@ -66,12 +62,7 @@ export default function Navbar() {
               }}
             >
               <IconPhone />
-              <span
-                style={{
-                  fontFamily: "JetBrains Mono",
-                  letterSpacing: "0.05em",
-                }}
-              >
+              <span style={{ fontFamily: "JetBrains Mono", letterSpacing: "0.05em" }}>
                 +9779819448022
               </span>
             </span>
@@ -152,49 +143,22 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               gap: 36,
-              marginLeft: "0",
-              position: "relative",
             }}
           >
             {NAV_ITEMS.map((item) => (
-              <div
+              <Link
                 key={item.label}
-                style={{ position: "relative" }}
-                onMouseEnter={() => item.children && setDropdown(item.label)}
-                onMouseLeave={() => setDropdown(null)}
+                to={item.path}
+                className="nav-link"
+                style={{
+                  color:
+                    location.pathname === item.path
+                      ? "var(--gold-dim)"
+                      : undefined,
+                }}
               >
-                <Link
-                  to={item.path}
-                  className="nav-link"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 4,
-                    color:
-                      location.pathname === item.path
-                        ? "var(--gold-dim)"
-                        : undefined,
-                  }}
-                >
-                  {item.label}
-                  {item.children && <IconChevronDown />}
-                </Link>
-
-                {/* Dropdown */}
-                {item.children && dropdown === item.label && (
-                  <div className="dropdown-menu">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        to={child.path}
-                        className="dropdown-item"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+                {item.label}
+              </Link>
             ))}
 
             <Link
@@ -206,23 +170,22 @@ export default function Navbar() {
             </Link>
           </div>
 
-                  {/* Mobile hamburger */}
-<button
-  onClick={() => setMobileOpen(true)}
-  style={{
-    marginLeft: "auto",
-    background: "none",
-    border: "none",
-    color: "var(--cream-text)",
-    cursor: "pointer",
-    display: "none",       /* ← hidden on desktop */
-    alignItems: "center",
-  }}
-  className="mobile-trigger"
->
-  <IconMenu />
-</button>
-
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(true)}
+            style={{
+              marginLeft: "auto",
+              background: "none",
+              border: "none",
+              color: "var(--cream-text)",
+              cursor: "pointer",
+              display: "none",
+              alignItems: "center",
+            }}
+            className="mobile-trigger"
+          >
+            <IconMenu />
+          </button>
         </div>
       </nav>
 
@@ -257,11 +220,6 @@ export default function Navbar() {
           >
             Get a Quote
           </Link>
-
-
-
-
-
         </div>
       )}
     </>

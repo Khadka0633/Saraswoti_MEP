@@ -6,6 +6,7 @@ import Services from "./pages/Services.jsx";
 import Projects from "./pages/Projects.jsx";
 import Contact  from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import Sectors from "./pages/Sectors.jsx";
 
 export default function App() {
   return (
@@ -18,7 +19,7 @@ export default function App() {
           <Route path="services" element={<Services />} />
           {/* Individual service sub-routes all render the Services page for now */}
           <Route path="services/:slug" element={<Services />} />
-          <Route path="sectors"  element={<Home />}    />
+          <Route path="sectors"  element={<Sectors />}    />
           <Route path="projects" element={<Projects />} />
           <Route path="contact"  element={<Contact />} />
         </Route>
