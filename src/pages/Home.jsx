@@ -484,7 +484,7 @@ function AboutSection() {
               }}
             >
               {[
-                ["4+", "MEP Projects"],
+                ["10+", "MEP Projects"],
                 ["20+", "Engineers"],
                 ["12+", "Sectors"],
               ].map(([n, l]) => (

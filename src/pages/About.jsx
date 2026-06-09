@@ -239,7 +239,7 @@ function StorySection() {
           >
             {[
               { end: 2025, label: "Founded" },
-              { end: 4, suffix: "+", label: "Projects" },
+              { end: 10, suffix: "+", label: "Projects" },
               { end: 20, suffix: "+", label: "Engineers" },
               { end: 12,  suffix: "",  label: "Sectors" },
             ].map((s) => (
