@@ -56,7 +56,7 @@ const SECTOR_DETAILS = {
       "Guest room automation (BMS)",
       "Swimming pool & water features",
     ],
-    stat: ["60+", "Hospitality Projects"],
+    stat: ["1+", "Hospitality Projects"],
     highlight:
       "From boutique guesthouses to five-star resorts, we engineer comfort at every level — delivering systems guests never notice because they simply work.",
   },
@@ -70,7 +70,7 @@ const SECTOR_DETAILS = {
       "Pharmacy clean-room HVAC",
       "24/7 redundancy systems",
     ],
-    stat: ["30+", "Healthcare Facilities"],
+    stat: ["3+", "Healthcare Facilities"],
     highlight:
       "Healthcare MEP is zero-tolerance work. Our teams are trained to ASHRAE 170 ventilation standards and coordinate directly with clinical staff during design.",
   },
@@ -84,7 +84,7 @@ const SECTOR_DETAILS = {
       "Energy performance monitoring",
       "LEED & EDGE compliance",
     ],
-    stat: ["40+", "Corporate Buildings"],
+    stat: ["4+", "Corporate Buildings"],
     highlight:
       "Modern offices demand energy efficiency and occupant comfort in equal measure. We deliver BMS-integrated systems that cut energy bills by up to 30%.",
   },
@@ -98,7 +98,7 @@ const SECTOR_DETAILS = {
       "Government & civic buildings",
       "Large-span roof drainage",
     ],
-    stat: ["15+", "Infrastructure Projects"],
+    stat: ["0+", "Infrastructure Projects"],
     highlight:
       "Infrastructure MEP demands multi-agency coordination and extreme reliability. We've delivered systems for Nepal's busiest public facilities with zero downtime.",
   },
@@ -112,7 +112,7 @@ const SECTOR_DETAILS = {
       "Effluent & wastewater treatment",
       "ETP & STP design",
     ],
-    stat: ["20+", "Industrial Facilities"],
+    stat: ["1+", "Industrial Facilities"],
     highlight:
       "Industrial MEP tolerates no downtime. We design with full redundancy and build-in provisions for future capacity expansion from day one.",
   },
@@ -126,7 +126,7 @@ const SECTOR_DETAILS = {
       "Rainwater harvesting & ETP",
       "Solar PV & energy management",
     ],
-    stat: ["25+", "Educational Institutions"],
+    stat: ["1+", "Educational Institutions"],
     highlight:
       "Schools and universities are communities, not just buildings. We design systems that last decades and keep running costs low for institutions on tight budgets.",
   },

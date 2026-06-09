@@ -1039,7 +1039,7 @@ function TestimonialsSection() {
 
 // ── Clients ───────────────────────────────────────────────────────────────────
 
-  {/* function ClientsSection() {
+ function ClientsSection() {
   return (
     <section
       style={{
@@ -1114,7 +1114,7 @@ function TestimonialsSection() {
     </section>
   );
    }
-  */}
+  
 
 // ── CTA ───────────────────────────────────────────────────────────────────────
 
@@ -1225,6 +1225,7 @@ export default function Home() {
       <SectorsPreview />
      
       <TestimonialsSection />
+      <ClientsSection/>
       
       <CTASection />
     </>

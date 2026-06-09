@@ -30,6 +30,7 @@ const SERVICE_ICONS = {
   steel:        <IconWind />,
   architectural:<IconDroplet />,
   Architectural:<IconDroplet />,
+   maintenance:  <IconSettings />,
 };
 
 // ── Detail data (add / extend as needed) ─────────────────────────────────────
@@ -45,7 +46,7 @@ const SERVICE_DETAILS = {
       "Clean-room HVAC",
     ],
     highlight:
-      "We have designed and installed HVAC systems for over 60 hotels and 30 hospitals — including full clean-room environments for pharmaceutical manufacturing.",
+      "We have designed and installed HVAC systems for hospitals — including full clean-room environments for pharmaceutical manufacturing.",
   },
   electrical: {
     features: [
@@ -57,7 +58,7 @@ const SERVICE_DETAILS = {
       "Solar PV integration",
     ],
     highlight:
-      "Our electrical division is Manufacturer-Certified by Schneider Electric, ABB and Siemens — giving clients direct access to OEM-level technical support.",
+      "Our electrical division is Manufacturer-Certified that give clients direct access to OEM-level technical support.",
   },
   plumbing: {
     features: [
@@ -69,7 +70,7 @@ const SERVICE_DETAILS = {
       "Medical gas piping",
     ],
     highlight:
-      "SaraswatiMEP plumbing teams are trained to ASPE standards and have installed over 500 km of piping across Nepal's largest commercial and residential buildings.",
+      "SaraswatiMEP plumbing teams are trained to ASPE standards and have installed commercial and residential buildings.",
   },
   fire: {
     features: [
@@ -93,7 +94,7 @@ const SERVICE_DETAILS = {
       "Warranty claim handling",
     ],
     highlight:
-      "Our AMC division maintains over 300 buildings across Nepal with a guaranteed 4-hour emergency response SLA and a 98% first-visit resolution rate.",
+      "Our AMC division maintains buildings across Nepal with a guaranteed 4-hour emergency response SLA and a 98% first-visit resolution rate.",
   },
   civil: {
     features: [
@@ -143,6 +144,18 @@ const SERVICE_DETAILS = {
     highlight:
       "Our architects work hand-in-hand with MEP engineers from day one — eliminating clashes early and delivering integrated, buildable designs on time.",
   },
+  maintenance: {
+  features: [
+    "Annual maintenance contracts",
+    "24/7 emergency response",
+    "Preventive maintenance schedules",
+    "Spare parts management",
+    "Energy performance monitoring",
+    "Warranty claim handling",
+  ],
+  highlight:
+    "Our maintenance division keeps your systems running 24/7 with guaranteed response times and a 98% first-visit resolution rate.",
+},
 };
 
 // ── Shared style tokens (mirror Home.jsx) ─────────────────────────────────────
@@ -180,79 +193,66 @@ function GoldRule({ width = 48 }) {
 }
 
 // ── SVG schematic visuals per service ────────────────────────────────────────
-
-function ServiceVisual({ serviceId, index }) {
-  const isLight = index % 2 !== 0; // light section → navy visual; dark section → navy visual too
+function ServiceVisual({ service }) {
   return (
-    <div
-      style={{
-        background: "var(--navy)",
-        height: 320,
-        position: "relative",
-        overflow: "hidden",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {/* Blueprint grid */}
-      <svg
-        viewBox="0 0 400 300"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
-      >
-        {[60, 120, 180, 240].map((y) => (
-          <line key={`h${y}`} x1="0" y1={y} x2="400" y2={y} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-        ))}
-        {[80, 160, 240, 320].map((x) => (
-          <line key={`v${x}`} x1={x} y1="0" x2={x} y2="300" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-        ))}
-        <text
-          x="200" y="165"
-          textAnchor="middle"
-          fill="rgba(255,255,255,0.03)"
-          fontSize="96"
-          fontFamily="'Playfair Display', serif"
-          fontWeight="700"
-        >
-          MEP
-        </text>
-        {/* Gold accent line */}
-        <line x1="60" y1="80" x2="340" y2="80" stroke="#b8962e" strokeWidth="1.5" opacity="0.6" />
-        <line x1="60" y1="80" x2="60" y2="220" stroke="#b8962e" strokeWidth="1.5" opacity="0.6" />
-        <line x1="340" y1="80" x2="340" y2="220" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-        <line x1="60" y1="220" x2="340" y2="220" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-        <rect x="60" y="80" width="40" height="12" fill="rgba(184,150,46,0.2)" stroke="#b8962e" strokeWidth="1" />
-      </svg>
-
-      {/* Large icon centred */}
+    <div style={{ position: "relative" }}>
+      {/* Main image */}
       <div
         style={{
+          height: 380,
+          overflow: "hidden",
           position: "relative",
-          zIndex: 1,
-          color: "var(--gold)",
-          opacity: 0.85,
-          transform: "scale(3.5)",
         }}
       >
-        {SERVICE_ICONS[serviceId]}
-      </div>
-
-      {/* Label */}
-      <div
-        style={{
-          position: "absolute",
-          top: 16,
-          left: 20,
-          fontFamily: "'Inter', sans-serif",
-          fontSize: "0.6rem",
-          color: "rgba(255,255,255,0.25)",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-        }}
-      >
-        SaraswatiMEP / {serviceId.toUpperCase()}
+        <img
+          src={service.img}
+          alt={service.label}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+            transition: "transform 0.4s ease",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.04)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        />
+        {/* Navy overlay tint at bottom */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0, left: 0, right: 0,
+            height: 80,
+            background: "linear-gradient(to top, rgba(15,45,82,0.5), transparent)",
+          }}
+        />
+        {/* Gold accent bar */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0, left: 0, right: 0,
+            height: 3,
+            background: "var(--gold)",
+          }}
+        />
+        {/* Label badge */}
+        <div
+          style={{
+            position: "absolute",
+            top: 16, left: 16,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "0.6rem",
+            fontWeight: 600,
+            color: "rgba(255,255,255,0.7)",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            background: "rgba(15,45,82,0.6)",
+            padding: "5px 10px",
+            backdropFilter: "blur(4px)",
+          }}
+        >
+          SaraswatiMEP / {service.id.toUpperCase()}
+        </div>
       </div>
     </div>
   );
@@ -523,7 +523,7 @@ export default function Services() {
                 {/* ── Visual panel ── */}
                 <div style={{ order: isEven ? 1 : 0 }}>
                   {/* Schematic visual */}
-                  <ServiceVisual serviceId={service.id} index={idx} />
+                  <ServiceVisual service={service} />
 
                   {/* Highlight callout */}
                   <div

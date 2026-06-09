@@ -14,13 +14,8 @@ import { PROJECTS } from "../data/index.js";
 // ── Data ──────────────────────────────────────────────────────────────────────
 
 const ALL_PROJECTS = [
-  ...PROJECTS,
-  { id: 7,  title: "Radisson Blu Kathmandu",         type: "Hospitality",  tag: "Completed", color: "#b8962e" },
-  { id: 8,  title: "B&B Hospital Gwarko",            type: "Healthcare",   tag: "Completed", color: "#2e7d6b" },
-  { id: 9,  title: "NMB Bank HQ",                    type: "Corporate",    tag: "Completed", color: "#1a4070" },
-  { id: 10, title: "Bhairahawa SEZ Factory Block",   type: "Industrial",   tag: "Ongoing",   color: "#7a5c1e" },
-  { id: 11, title: "Budhanilkantha School",           type: "Education",    tag: "Completed", color: "#3a6b3a" },
-  { id: 12, title: "Kathmandu University Main Bldg", type: "Education",    tag: "Ongoing",   color: "#3a6b3a" },
+  ...PROJECTS
+ 
 ];
 
 const ALL_TYPES = ["All", ...Array.from(new Set(ALL_PROJECTS.map((p) => p.type)))];

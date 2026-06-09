@@ -3,6 +3,7 @@ export const SERVICES = [
   {
     id: "hvac",
     short: "01",
+    img: "/images/HVAC.jpg",
     label: "HVAC Systems",
     desc: "Precision-engineered heating, ventilation & air conditioning for commercial and industrial environments — from split systems to large-scale chillers.",
     path: "/services/hvac",
@@ -10,6 +11,7 @@ export const SERVICES = [
   {
     id: "electrical",
     short: "02",
+    img: "/images/picture.jpg",
     label: "Electrical Works",
     desc: "Comprehensive LT/HT electrical installations, generator systems, UPS, BMS integration, and energy audits for institutional clients.",
     path: "/services/electrical",
@@ -17,6 +19,7 @@ export const SERVICES = [
   {
     id: "plumbing",
     short: "03",
+    img: "/images/plumb.jpg",
     label: "Plumbing & Sanitation",
     desc: "Whole-building plumbing design with a focus on water efficiency, sustainability, and compliance with international standards.",
     path: "/services/plumbing",
@@ -24,6 +27,7 @@ export const SERVICES = [
   {
     id: "fire",
     short: "04",
+    img: "/images/picture.jpg",
     label: "Fire Safety Systems",
     desc: "State-of-the-art fire detection, suppression, and life-safety systems engineered to protect people and critical infrastructure.",
     path: "/services/fire-safety",
@@ -31,6 +35,7 @@ export const SERVICES = [
   {
     id: "amc",
     short: "05",
+    img: "/images/picture.jpg",
     label: "AMC & Service Support",
     desc: "Post-project annual maintenance contracts and rapid-response field support teams to maximize uptime for your systems.",
     path: "/services/amc",
@@ -39,7 +44,8 @@ export const SERVICES = [
     {
     id: "civil",
     short: "06",
-    label: "Civil Engineering",
+   img: "/images/civil.jpg",
+    label: "Civil Engineering & construction",
     desc: "From permit submission to site supervision and final handover. Our team coordinates contractors, manages QA/QC, and ensures delivery on time and budget.",
     path: "/services/amc",
   },
@@ -47,6 +53,7 @@ export const SERVICES = [
     {
     id: "steel",
     short: "07",
+    img: "/images/steel.jpg",
     label: "Steel Structures",
     desc: "Design, analysis, and detailed fabrication drawings for industrial sheds, portal frames, trusses, and composite structures using Tekla, ETABS and SAP2000..",
     path: "/services/amc",
@@ -54,8 +61,17 @@ export const SERVICES = [
     {
     id: "Architectural",
     short: "08",
+    img: "/images/arch.jpg",
     label: "Architectural Design",
     desc: "Space planning, conceptual design, and full working drawing packages. We bridge aesthetics and function, producing construction-ready architectural documentation.",
+    path: "/services/amc",
+  },
+  {
+    id: "maintenance",
+    short: "09",
+    img: "/images/maintain.png",
+    label: "Maintainance",
+    desc: "Reliable maintenance services to keep your systems running at peak performance — with scheduled visits, rapid emergency response, and dedicated support teams.",
     path: "/services/amc",
   },
 ];
@@ -72,41 +88,45 @@ export const SECTORS = [
 
 // ── Projects ─────────────────────────────────────────────────────────────────
 export const PROJECTS = [
-  { id: 1, title: "Grand Hyatt Kathmandu",            type: "Hospitality",    tag: "Completed", color: "#c9a84c" },
-  { id: 2, title: "Norvic Int'l Hospital Expansion",  type: "Healthcare",     tag: "Completed", color: "#3dd9c0" },
-  { id: 3, title: "TIA New Terminal MEP",             type: "Infrastructure", tag: "Ongoing",   color: "#d94f3d" },
-  { id: 4, title: "NCB Corporate HQ",                 type: "Corporate",      tag: "Completed", color: "#7b8fff" },
-  { id: 5, title: "Patanjali Manufacturing Plant",    type: "Industrial",     tag: "Ongoing",   color: "#f0a04b" },
-  { id: 6, title: "UNDP Nepal Office",                type: "Corporate",      tag: "Completed", color: "#a0d490" },
+  { id: 1, title: "Navratna Star Hotel",            type: "Hospitality",    tag: "Completed", color: "#c9a84c" },
+  { id: 2, title: "Maa Laxmi Health Care",  type: "Healthcare",     tag: "On going", color: "#3dd9c0" },
+  { id: 3, title: "Janak Drug",                 type: "Corporate",      tag: "Completed", color: "#7b8fff" },
+  { id: 4, title: "MAK Automobile",    type: "Industrial",     tag: "Ongoing",   color: "#f0a04b" },
+  { id: 5, title: "Madhuwan Jewellers",                type: "Corporate",      tag: "Completed", color: "#a0d490" },
+   { id: 6, title: "RS Tower",                 type: "Corporate",      tag: "Completed", color: "#4c537a" },
+   { id: 7, title: "RK English Boarding School",                 type: "Education",      tag: "Completed", color: "#806036" },
+   { id: 8, title: "Maa Laxmi Pharmacy",                 type: "Healthcare",      tag: "Completed", color: "#c28434" },
+    { id: 9, title: "RS Drug and Distributors",                 type: "Healthcare",      tag: "Completed", color: "#398b7a" },
+    { id: 10, title: "Mangpahang Unisex Salon",                 type: "Corporate",      tag: "Completed", color: "#635083" },
 ];
 
 // ── Testimonials ─────────────────────────────────────────────────────────────
 export const TESTIMONIALS = [
   {
     id: 1,
-    quote: "The SaraswotiMEP team delivered every milestone ahead of schedule and their technical depth is unmatched in Nepal. Their HVAC design for our hotel exceeded our energy targets.",
-    name: "Arya Shrestha",
-    role: "Managing Director",
+    quote: "The SaraswotiMEP team delivered every milestone ahead of schedule and their technical depth is unmatched in Nepal. Their HVAC design for our Salon exceeded our energy targets.",
+    name: "Sudip Rai",
+    role: "CEO - Mangpahang Unisex Salon",
   },
   {
     id: 2,
     quote: "From design to commissioning, SaraswotiMEP handled our entire hospital MEP works with zero defects. Highly recommended for critical infrastructure projects.",
-    name: "Rakesh Pal",
-    role: "GM Projects",
+    name: "Kalyan Shah",
+    role: "Managing Director - Mahalaxmi Health Care",
   },
   {
     id: 3,
     quote: "Outstanding after-sales support. Whenever we needed them, they responded within hours. That level of commitment is rare in this industry.",
-    name: "Abin Rai",
-    role: "Managing Director",
+    name: "Ram Kumar Sah",
+    role: "Founder - RK English Boarding School",
   },
 ];
 
 // ── Clients ──────────────────────────────────────────────────────────────────
 export const CLIENTS = [
-  "UNDP", "World Bank", "Marriott", "Ncell",
-  "Dabur", "Soaltee", "KFC", "Radisson",
-  "Patanjali", "Siddhartha Bank", "Nepal Mediciti", "Kantipur TV",
+  "Navratna Star Hotel", "Maa Laxmi Health Care", "Janak Drug", "MAK Automobile",
+  "Madhuwan Jewellers", "RS Tower", "RK English Boarding School", "Maa Laxmi Pharmacy",
+  "RS Drug and Distributors", "Mangpahang Unisex Salon", 
 ];
 
 // ── Nav Items ─────────────────────────────────────────────────────────────────
@@ -146,3 +166,5 @@ export const ABOUT_FEATURES = [
   "⚡ Fast Turnaround",
   "💡 Value Engineering",
 ];
+
+
