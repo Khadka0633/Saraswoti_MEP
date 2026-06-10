@@ -7,6 +7,7 @@
  */
 
 import { Link } from "react-router-dom";
+import ServiceIcon3D from "../components/ServiceIcon3D.jsx";
 import {
   IconArrow,
   IconCheck,
@@ -411,9 +412,7 @@ export default function Services() {
                       marginBottom: 20,
                     }}
                   >
-                    <span style={{ color: "var(--gold)" }}>
-                      {SERVICE_ICONS[service.id]}
-                    </span>
+                   <ServiceIcon3D serviceId={service.id} size={50} />
                     <span
                       style={{
                         fontFamily: "'Inter', sans-serif",

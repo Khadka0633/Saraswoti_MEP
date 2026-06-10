@@ -11,7 +11,7 @@ export const SERVICES = [
   {
     id: "electrical",
     short: "02",
-    img: "/images/picture.jpg",
+    img: "/images/Electric.jpg",
     label: "Electrical Works",
     desc: "Comprehensive LT/HT electrical installations, generator systems, UPS, BMS integration, and energy audits for institutional clients.",
     path: "/services/electrical",
@@ -27,7 +27,7 @@ export const SERVICES = [
   {
     id: "fire",
     short: "04",
-    img: "/images/picture.jpg",
+    img: "/images/Fire.jpg",
     label: "Fire Safety Systems",
     desc: "State-of-the-art fire detection, suppression, and life-safety systems engineered to protect people and critical infrastructure.",
     path: "/services/fire-safety",
@@ -35,7 +35,7 @@ export const SERVICES = [
   {
     id: "amc",
     short: "05",
-    img: "/images/picture.jpg",
+    img: "/images/AMC.jpg",
     label: "AMC & Service Support",
     desc: "Post-project annual maintenance contracts and rapid-response field support teams to maximize uptime for your systems.",
     path: "/services/amc",
@@ -78,20 +78,20 @@ export const SERVICES = [
 
 // ── Sectors ─────────────────────────────────────────────────────────────────
 export const SECTORS = [
-  { label: "Hospitality",     color: "#c9a84c", sub: "Hotels · Resorts · Restaurants" },
-  { label: "Healthcare",      color: "#3dd9c0", sub: "Hospitals · Labs · Pharma" },
-  { label: "Corporate",       color: "#d94f3d", sub: "Banks · HQs · Embassies" },
-  { label: "Infrastructure",  color: "#7b8fff", sub: "Airports · Telecom · Data Centers" },
-  { label: "Education",       color: "#f0a04b", sub: "Universities · Schools" },
-  { label: "Industrial",      color: "#a0d490", sub: "Factories · Warehouses" },
+  { label: "Hospitality",     color: "#c9a84c", sub: "Hotels · Resorts · Restaurants" , img: "/images/Hospitality.png" },
+  { label: "Healthcare",      color: "#3dd9c0", sub: "Hospitals · Labs · Pharma" ,          img: "/images/Healthcare.jpeg" },
+  { label: "Corporate",       color: "#d94f3d", sub: "Banks · HQs · Embassies" ,          img: "/images/Corporate.jpg" },
+  { label: "Infrastructure",  color: "#7b8fff", sub: "Airports · Telecom · Data Centers" ,          img: "/images/Infrastructure.webp" },
+  { label: "Education",       color: "#f0a04b", sub: "Universities · Schools" ,          img: "/images/Education.jpg" },
+  { label: "Industrial",      color: "#a0d490", sub: "Factories · Warehouses" ,          img: "/images/Industrial.jpg" },
 ];
 
 // ── Projects ─────────────────────────────────────────────────────────────────
 export const PROJECTS = [
   { id: 1, title: "Navratna Star Hotel",            type: "Hospitality",    tag: "Completed", color: "#c9a84c" },
-  { id: 2, title: "Maa Laxmi Health Care",  type: "Healthcare",     tag: "On going", color: "#3dd9c0" },
+  { id: 2, title: "Maa Laxmi Health Care",  type: "Healthcare",     tag: "Ongoing", color: "#3dd9c0" },
   { id: 3, title: "Janak Drug",                 type: "Corporate",      tag: "Completed", color: "#7b8fff" },
-  { id: 4, title: "MAK Automobile",    type: "Industrial",     tag: "Ongoing",   color: "#f0a04b" },
+  { id: 4, title: "MAK Automobile",    type: "Industrial",     tag: "Completed",   color: "#f0a04b" },
   { id: 5, title: "Madhuwan Jewellers",                type: "Corporate",      tag: "Completed", color: "#a0d490" },
    { id: 6, title: "RS Tower",                 type: "Corporate",      tag: "Completed", color: "#4c537a" },
    { id: 7, title: "RK English Boarding School",                 type: "Education",      tag: "Completed", color: "#806036" },

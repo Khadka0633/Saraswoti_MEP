@@ -1,25 +1,4 @@
-/**
- * Home.jsx — SaraswatiMEP Corporate Redesign
- *
- * Typography: Inter (body) + Playfair Display (headings) — load in index.html:
- *   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
- *
- * Add to your global CSS (index.css / :root):
- *   --navy:       #0f2d52;
- *   --navy-mid:   #1a4070;
- *   --navy-light: #e8eef5;
- *   --warm-white: #f8f7f4;
- *   --warm-gray:  #f0ede8;
- *   --ink:        #1a1a1a;
- *   --ink-mid:    #4a4a4a;
- *   --ink-light:  #7a7a7a;
- *   --gold:       #b8962e;
- *   --gold-light: #f5edda;
- *   --border:     #e2ddd6;
- *   --white:      #ffffff;
- *
- *   body { font-family: 'Inter', sans-serif; }
- */
+
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -41,6 +20,13 @@ import {
   CLIENTS,
   ABOUT_FEATURES,
 } from "../data/index.js";
+import TiltCard from "../components/TiltCard.jsx";
+import PipeNetwork from "../components/PipeNetwork.jsx";
+import Globe3D from "../components/Globe3D.jsx";
+import ServiceIcon3D from "../components/ServiceIcon3D.jsx";
+import MorphingShape from "../components/MorphingShape.jsx";
+import MEPBuilding from "../components/MorphingShape.jsx";
+
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -169,6 +155,7 @@ function GoldRule({ width = 48 }) {
 // ── About ─────────────────────────────────────────────────────────────────────
 
 function AboutSection() {
+  
   return (
     <section
       id="about"
@@ -186,186 +173,25 @@ function AboutSection() {
         >
           {/* Visual */}
           <div style={{ position: "relative" }}>
-            <div
-              style={{
-                background: "var(--navy)",
-                height: 460,
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
-              <svg
-                viewBox="0 0 480 420"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ width: "100%", height: "100%" }}
-              >
-                {[60, 120, 180, 240, 300, 360].map((y) => (
-                  <line
-                    key={`h${y}`}
-                    x1="0"
-                    y1={y}
-                    x2="480"
-                    y2={y}
-                    stroke="rgba(255,255,255,0.04)"
-                    strokeWidth="1"
-                  />
-                ))}
-                {[80, 160, 240, 320, 400].map((x) => (
-                  <line
-                    key={`v${x}`}
-                    x1={x}
-                    y1="0"
-                    x2={x}
-                    y2="420"
-                    stroke="rgba(255,255,255,0.04)"
-                    strokeWidth="1"
-                  />
-                ))}
-                <rect
-                  x="80"
-                  y="60"
-                  width="320"
-                  height="300"
-                  stroke="rgba(255,255,255,0.12)"
-                  strokeWidth="1"
-                  fill="none"
-                />
-                {[120, 180, 240, 300].map((y) => (
-                  <line
-                    key={`f${y}`}
-                    x1="80"
-                    y1={y}
-                    x2="400"
-                    y2={y}
-                    stroke="rgba(255,255,255,0.06)"
-                    strokeWidth="1"
-                  />
-                ))}
-                <rect
-                  x="100"
-                  y="70"
-                  width="140"
-                  height="16"
-                  stroke="#b8962e"
-                  strokeWidth="1.5"
-                  fill="rgba(184,150,46,0.08)"
-                />
-                <line
-                  x1="240"
-                  y1="78"
-                  x2="380"
-                  y2="78"
-                  stroke="#b8962e"
-                  strokeWidth="1.5"
-                />
-                <line
-                  x1="380"
-                  y1="78"
-                  x2="380"
-                  y2="120"
-                  stroke="#b8962e"
-                  strokeWidth="1.5"
-                />
-                <line
-                  x1="60"
-                  y1="120"
-                  x2="80"
-                  y2="120"
-                  stroke="#3dd9c0"
-                  strokeWidth="1.5"
-                />
-                <line
-                  x1="60"
-                  y1="180"
-                  x2="80"
-                  y2="180"
-                  stroke="#3dd9c0"
-                  strokeWidth="1.5"
-                />
-                <line
-                  x1="60"
-                  y1="240"
-                  x2="80"
-                  y2="240"
-                  stroke="#3dd9c0"
-                  strokeWidth="1.5"
-                />
-                <line
-                  x1="60"
-                  y1="120"
-                  x2="60"
-                  y2="300"
-                  stroke="#3dd9c0"
-                  strokeWidth="1"
-                />
-                <line
-                  x1="420"
-                  y1="60"
-                  x2="420"
-                  y2="360"
-                  stroke="#7b8fff"
-                  strokeWidth="1.5"
-                  strokeDasharray="6 3"
-                />
-                <circle cx="420" cy="120" r="4" fill="#7b8fff" />
-                <circle cx="420" cy="180" r="4" fill="#7b8fff" />
-                <circle cx="420" cy="240" r="4" fill="#7b8fff" />
-                <circle cx="420" cy="300" r="4" fill="#7b8fff" />
-                <text
-                  x="100"
-                  y="58"
-                  fill="#b8962e"
-                  fontSize="8"
-                  fontFamily="'JetBrains Mono', monospace"
-                >
-                  HVAC — AHU-01
-                </text>
-                <text
-                  x="28"
-                  y="175"
-                  fill="#3dd9c0"
-                  fontSize="8"
-                  fontFamily="'JetBrains Mono', monospace"
-                  transform="rotate(-90,28,175)"
-                >
-                  ELEC MAIN
-                </text>
-                <text
-                  x="428"
-                  y="195"
-                  fill="#7b8fff"
-                  fontSize="8"
-                  fontFamily="'JetBrains Mono', monospace"
-                >
-                  PLB RISER
-                </text>
-                <text
-                  x="240"
-                  y="220"
-                  textAnchor="middle"
-                  fill="rgba(255,255,255,0.04)"
-                  fontSize="80"
-                  fontFamily="'Playfair Display', serif"
-                  fontWeight="700"
-                >
-                  MEP
-                </text>
-              </svg>
-              <div
-                style={{
-                  position: "absolute",
-                  top: 20,
-                  left: 20,
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "0.65rem",
-                  color: "rgba(255,255,255,0.25)",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                SaraswatiMEP / SCHEMATIC-01
-              </div>
-            </div>
+           <div style={{
+  background: "var(--navy)",
+  height: 460,
+  position: "relative",
+  overflow: "hidden",
+}}>
+  <PipeNetwork height={460} />
+ 
+  <div style={{
+    position: "absolute",
+    top: 20, left: 20,
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: "0.65rem",
+    color: "rgba(255,255,255,0.25)",
+    letterSpacing: "0.1em",
+  }}>
+    SaraswatiMEP / PIPE-NETWORK-3D
+  </div>
+</div>
 
             {/* Floating stat card */}
             <div
@@ -526,6 +352,7 @@ function AboutSection() {
 // ── Services ──────────────────────────────────────────────────────────────────
 
 function ServicesPreview() {
+   
   return (
     <section style={{ background: "var(--navy)", padding: "120px 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
@@ -565,7 +392,7 @@ function ServicesPreview() {
           }}
         >
           {SERVICES.map((s) => (
-            <div
+            <TiltCard
               key={s.id}
               style={{
                 background: "rgba(255,255,255,0.04)",
@@ -581,15 +408,7 @@ function ServicesPreview() {
                 (e.currentTarget.style.background = "rgba(255,255,255,0.04)")
               }
             >
-              <div
-                style={{
-                  color: SERVICE_COLORS[s.id] ?? "var(--gold)",
-                  marginBottom: 20,
-                  opacity: 0.9,
-                }}
-              >
-                {SERVICE_ICONS[s.id]}
-              </div>
+              <ServiceIcon3D serviceId={s.id} size={40} />
               <div
                 style={{
                   fontFamily: "'Inter', sans-serif",
@@ -644,7 +463,7 @@ function ServicesPreview() {
               >
                 Learn More <IconArrow size={13} />
               </Link>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>
@@ -695,7 +514,7 @@ function SectorsPreview() {
           className="three-col"
         >
           {SECTORS.map((s, i) => (
-            <div
+            <TiltCard
               key={s.label}
               style={{
                 background: "var(--white)",
@@ -755,7 +574,7 @@ function SectorsPreview() {
               >
                 {s.sub}
               </p>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>
@@ -1222,6 +1041,8 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ServicesPreview />
+       
+       <MEPBuilding />
       <SectorsPreview />
      
       <TestimonialsSection />

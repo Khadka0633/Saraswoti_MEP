@@ -139,71 +139,48 @@ function getDetailKey(label) {
 
 // ── Sector visual (blueprint schematic) ──────────────────────────────────────
 
-function SectorVisual({ color, index }) {
-  const isLight = index % 2 !== 0;
+function SectorVisual({ sector }) {
   return (
-    <div
-      style={{
-        background: "var(--navy)",
-        height: 340,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <svg
-        viewBox="0 0 480 340"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ width: "100%", height: "100%" }}
-      >
-        {/* Grid */}
-        {[68, 136, 204, 272].map((y) => (
-          <line key={`h${y}`} x1="0" y1={y} x2="480" y2={y} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-        ))}
-        {[96, 192, 288, 384].map((x) => (
-          <line key={`v${x}`} x1={x} y1="0" x2={x} y2="340" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-        ))}
-        {/* Outer rect */}
-        <rect x="60" y="50" width="360" height="240" stroke="rgba(255,255,255,0.08)" strokeWidth="1" fill="none" />
-        {/* Floor lines */}
-        {[110, 170, 230].map((y) => (
-          <line key={`f${y}`} x1="60" y1={y} x2="420" y2={y} stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-        ))}
-        {/* Gold accent */}
-        <line x1="60" y1="50" x2="240" y2="50" stroke={color} strokeWidth="2" opacity="0.7" />
-        <line x1="60" y1="50" x2="60" y2="290" stroke={color} strokeWidth="1.5" opacity="0.5" />
-        <rect x="60" y="50" width="80" height="14" fill={`${color}22`} stroke={color} strokeWidth="1" />
-        {/* Dashed riser */}
-        <line x1="420" y1="50" x2="420" y2="290" stroke="rgba(123,143,255,0.4)" strokeWidth="1.5" strokeDasharray="6 3" />
-        {[110, 170, 230].map((y) => (
-          <circle key={`d${y}`} cx="420" cy={y} r="3.5" fill="rgba(123,143,255,0.6)" />
-        ))}
-        {/* Ghost text */}
-        <text
-          x="240" y="195"
-          textAnchor="middle"
-          fill="rgba(255,255,255,0.025)"
-          fontSize="88"
-          fontFamily="'Playfair Display', serif"
-          fontWeight="700"
-        >
-          MEP
-        </text>
-      </svg>
-      {/* Label */}
-      <div style={{
-        position: "absolute", top: 16, left: 20,
-        fontFamily: "'Inter', sans-serif",
-        fontSize: "0.6rem", color: "rgba(255,255,255,0.2)",
-        letterSpacing: "0.1em", textTransform: "uppercase",
-      }}>
-        SaraswatiMEP / SECTOR
+    <div style={{ position: "relative" }}>
+      <div style={{ height: 380, overflow: "hidden", position: "relative" }}>
+        <img
+          src={sector.img}
+          alt={sector.label}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+            transition: "transform 0.4s ease",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.04)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        />
+        {/* Bottom gradient */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0,
+          height: 80,
+          background: "linear-gradient(to top, rgba(15,45,82,0.5), transparent)",
+        }} />
+        {/* Color accent bar */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0,
+          height: 3, background: sector.color,
+        }} />
+        {/* Label badge */}
+        <div style={{
+          position: "absolute", top: 16, left: 16,
+          fontFamily: "'Inter', sans-serif",
+          fontSize: "0.6rem", fontWeight: 600,
+          color: "rgba(255,255,255,0.7)",
+          letterSpacing: "0.12em", textTransform: "uppercase",
+          background: "rgba(15,45,82,0.6)",
+          padding: "5px 10px",
+          backdropFilter: "blur(4px)",
+        }}>
+          SaraswatiMEP / {sector.label.toUpperCase()}
+        </div>
       </div>
-      {/* Color accent bar */}
-      <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0,
-        height: 3, background: color,
-      }} />
     </div>
   );
 }
@@ -517,7 +494,7 @@ export default function Sectors() {
 
                 {/* Visual + callout */}
                 <div style={{ order: isEven ? 1 : 0 }}>
-                  <SectorVisual color={sector.color} index={idx} />
+                  <SectorVisual sector={sector} />
 
                   {/* Highlight callout */}
                   <div style={{

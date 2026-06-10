@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IconArrow } from "../components/Icons.jsx";
+import ParticleField from "./ParticleField.jsx";
 
 const CYCLING_WORDS = ["Precision.", "Integrity.", "Excellence."];
 
@@ -35,6 +36,9 @@ export default function HeroSection() {
         background: "linear-gradient(105deg, rgba(8,6,2,0.82) 0%, rgba(8,6,2,0.65) 20%, rgba(8,6,2,0.50) 50%)",
         zIndex: 0,
       }} />
+
+      {/* ── Particle Field ── */}
+<ParticleField />
 
 
       {/* ── Main content ────────────────────────────────────────────────────── */}
@@ -160,7 +164,7 @@ export default function HeroSection() {
                 ))}
               </div>
               <div style={{ display: "flex", gap: 16, marginTop: 10 }}>
-                {["Residential-Building","Restuarant","Pub"].map((l) => (
+                {["Residential-Building","Restaurant","Pub"].map((l) => (
                   <span key={l} style={{ fontSize: "0.68rem", color: "var(--silver)", fontFamily: "JetBrains Mono" }}>
                     {l}
                   </span>
